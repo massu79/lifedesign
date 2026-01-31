@@ -1,15 +1,24 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
 import Goals from './pages/Goals';
 import Agent from './pages/Agent';
 import Credentials from './pages/Credentials';
 import LifeDesignWizard from './pages/LifeDesignWizard';
+import Onboarding from './pages/Onboarding';
 
 function App() {
+  const location = useLocation();
+  const hasTarget = localStorage.getItem('lifeTarget');
+
+  // Simple protection: If no target and not on onboarding, redirect
+  if (!hasTarget && location.pathname !== '/onboarding') {
+    return <Navigate to="/onboarding" replace />;
+  }
+
   return (
     <Routes>
+      <Route path="/onboarding" element={<Onboarding />} />
       <Route path="/" element={<Layout />}>
         <Route index element={<Dashboard />} />
         <Route path="goals" element={<Goals />} />

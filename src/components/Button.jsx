@@ -12,10 +12,10 @@ const Button = ({
     const baseStyles = 'inline-flex items-center justify-center rounded-lg font-bold tracking-wide transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[var(--color-bg-dark)] uppercase text-xs';
 
     const variants = {
-        primary: 'bg-[var(--color-primary)] text-black hover:bg-cyan-400 hover:shadow-[0_0_20px_var(--color-primary-glow)]',
-        secondary: 'bg-[var(--color-bg-card)] text-[var(--color-text-main)] border border-[var(--color-border)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]',
+        primary: 'btn-solana-primary border border-white/10',
+        secondary: 'btn-solana-secondary', // Using utility class defined in index.css
         ghost: 'bg-transparent text-[var(--color-text-muted)] hover:text-[var(--color-text-main)] hover:bg-[rgba(255,255,255,0.05)]',
-        neon: 'bg-transparent border border-[var(--color-secondary)] text-[var(--color-secondary)] hover:bg-[var(--color-secondary)] hover:text-white hover:shadow-[0_0_20px_var(--color-secondary-glow)]'
+        neon: 'bg-transparent border border-[var(--color-secondary)] text-[var(--color-secondary)] hover:bg-[var(--color-secondary)] hover:text-black hover:shadow-[0_0_20px_var(--color-secondary-glow)]'
     };
 
     const sizes = {
