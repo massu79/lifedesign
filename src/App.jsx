@@ -6,6 +6,7 @@ import Agent from './pages/Agent';
 import Credentials from './pages/Credentials';
 import LifeDesignWizard from './pages/LifeDesignWizard';
 import Onboarding from './pages/Onboarding';
+import Achievements from './pages/Achievements';
 
 function App() {
   const location = useLocation();
@@ -25,6 +26,7 @@ function App() {
         <Route path="design" element={<LifeDesignWizard />} />
         <Route path="agent" element={<Agent />} />
         <Route path="credentials" element={<Credentials />} />
+        <Route path="achievements" element={<Achievements />} />
         {/* Fallback for other routes */}
         <Route path="*" element={<div className="p-8">Page Not Found</div>} />
       </Route>

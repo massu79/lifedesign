@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-import { LayoutDashboard, Target, MessageSquare, Award, Settings, User, Wallet, Sparkles } from 'lucide-react';
+import { LayoutDashboard, Target, MessageSquare, Award, Settings, User, Wallet, Sparkles, Compass, Bot } from 'lucide-react'; // Added Compass and Bot
 import clsx from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -33,6 +33,42 @@ const WalletWidget = () => (
         </div>
     </div>
 );
+
+// New Sidebar component based on the provided Code Edit
+const Sidebar = () => {
+    return (
+        <aside className="w-64 border-r border-[var(--color-border)] flex flex-col hidden lg:flex bg-[var(--color-bg-card)]">
+            <div className="p-6">
+                <h2 className="text-xl font-bold tracking-tight flex items-center gap-2">
+                    <span className="w-8 h-8 rounded-lg bg-gradient-to-tr from-[var(--color-primary)] to-[var(--color-secondary)] block"></span>
+                    LifeOS
+                </h2>
+            </div>
+
+            <nav className="flex-1 px-4 space-y-2">
+                <NavLink to="/" className={({ isActive }) => `flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${isActive ? 'bg-[var(--color-primary)]/10 text-[var(--color-primary)] border border-[var(--color-primary)]/20' : 'text-[var(--color-text-muted)] hover:text-white hover:bg-white/5'}`}>
+                    <LayoutDashboard size={20} /> Dashboard
+                </NavLink>
+                <NavLink to="/goals" className={({ isActive }) => `flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${isActive ? 'bg-[var(--color-primary)]/10 text-[var(--color-primary)] border border-[var(--color-primary)]/20' : 'text-[var(--color-text-muted)] hover:text-white hover:bg-white/5'}`}>
+                    <Target size={20} /> Goals & OKRs
+                </NavLink>
+                <NavLink to="/design" className={({ isActive }) => `flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${isActive ? 'bg-[var(--color-primary)]/10 text-[var(--color-primary)] border border-[var(--color-primary)]/20' : 'text-[var(--color-text-muted)] hover:text-white hover:bg-white/5'}`}>
+                    <Compass size={20} /> Life Wizard
+                </NavLink>
+                <NavLink to="/achievements" className={({ isActive }) => `flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${isActive ? 'bg-[var(--color-primary)]/10 text-[var(--color-primary)] border border-[var(--color-primary)]/20' : 'text-[var(--color-text-muted)] hover:text-white hover:bg-white/5'}`}>
+                    <Award size={20} /> Achievements
+                </NavLink>
+                <NavLink to="/agent" className={({ isActive }) => `flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${isActive ? 'bg-[var(--color-primary)]/10 text-[var(--color-primary)] border border-[var(--color-primary)]/20' : 'text-[var(--color-text-muted)] hover:text-white hover:bg-white/5'}`}>
+                    <Bot size={20} /> Agent
+                </NavLink>
+                <NavLink to="/credentials" className={({ isActive }) => `flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${isActive ? 'bg-[var(--color-primary)]/10 text-[var(--color-primary)] border border-[var(--color-primary)]/20' : 'text-[var(--color-text-muted)] hover:text-white hover:bg-white/5'}`}>
+                    <Award size={20} /> Credentials
+                </NavLink>
+            </nav>
+        </aside>
+    );
+};
+
 
 const Layout = () => {
     return (
