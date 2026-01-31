@@ -5,7 +5,7 @@ import Goals from './pages/Goals';
 import Agent from './pages/Agent';
 import Credentials from './pages/Credentials';
 import LifeDesignWizard from './pages/LifeDesignWizard';
-import Onboarding from './pages/Onboarding';
+import OnboardingWizard from './pages/OnboardingWizard';
 import Achievements from './pages/Achievements';
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/onboarding" element={<Onboarding />} />
+      <Route path="/onboarding" element={<OnboardingWizard />} />
       <Route path="/" element={<Layout />}>
         <Route index element={<Dashboard />} />
         <Route path="goals" element={<Goals />} />

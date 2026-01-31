@@ -4,18 +4,18 @@ import { twMerge } from 'tailwind-merge';
 
 const Button = ({
     children,
-    variant = 'primary', // primary, secondary, ghost, neon
+    variant = 'primary', // primary, secondary, ghost, outline
     size = 'md', // sm, md, lg
     className,
     ...props
 }) => {
-    const baseStyles = 'inline-flex items-center justify-center rounded-lg font-bold tracking-wide transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[var(--color-bg-dark)] uppercase text-xs';
+    const baseStyles = 'btn-base inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-primary-light)]';
 
     const variants = {
-        primary: 'btn-solana-primary border border-white/10',
-        secondary: 'btn-solana-secondary', // Using utility class defined in index.css
-        ghost: 'bg-transparent text-[var(--color-text-muted)] hover:text-[var(--color-text-main)] hover:bg-[rgba(255,255,255,0.05)]',
-        neon: 'bg-transparent border border-[var(--color-secondary)] text-[var(--color-secondary)] hover:bg-[var(--color-secondary)] hover:text-black hover:shadow-[0_0_20px_var(--color-secondary-glow)]'
+        primary: 'bg-[var(--color-primary)] text-white hover:bg-[#F97316] hover:shadow-lg shadow-md',
+        secondary: 'bg-[var(--color-secondary-light)] text-[var(--color-secondary)] hover:bg-[#BAE6FD]',
+        outline: 'bg-transparent border-2 border-[var(--color-border)] text-[var(--color-text-muted)] hover:border-[var(--color-text-main)] hover:text-[var(--color-text-main)]',
+        ghost: 'bg-transparent text-[var(--color-text-muted)] hover:bg-[var(--color-bg-card-hover)] hover:text-[var(--color-text-main)]',
     };
 
     const sizes = {

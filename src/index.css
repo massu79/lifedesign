@@ -1,39 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&family=Nunito:wght@400;600;700&display=swap');
 
 :root {
-  /* Solana Brand Colors */
-  --color-primary: #9945FF;
-  /* Solana Purple */
-  --color-primary-glow: rgba(153, 69, 255, 0.6);
-  --color-secondary: #14F195;
-  /* Solana Green */
-  --color-secondary-glow: rgba(20, 241, 149, 0.6);
-  --color-accent: #19FB9B;
-  /* Brighter Green */
+  /* Morning Breeze Palette */
+  --color-bg-base: #FAFAFA;
+  /* Off-white cream */
+  --color-bg-card: #FFFFFF;
+  --color-bg-card-hover: #F0F9FF;
+  /* Very light blue tint */
 
-  /* Dark Theme Palette (Solana Style) */
-  --color-bg-dark: #000000;
-  /* Deep Black */
-  --color-bg-card: #111111;
-  --color-bg-card-hover: #1A1A1A;
-  --color-text-main: #FFFFFF;
-  --color-text-muted: #808080;
-  --color-border: #2A2A2A;
-  --color-border-glow: rgba(153, 69, 255, 0.3);
+  --color-primary: #FB923C;
+  /* Soft Coral / Absorbent Orange */
+  --color-primary-light: #FFEDD5;
+  --color-secondary: #38BDF8;
+  /* Soft Sky Blue */
+  --color-secondary-light: #E0F2FE;
 
-  /* Glassmorphism & Glows */
-  --glass-bg: rgba(17, 17, 17, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --neon-shadow: 0 0 10px var(--color-primary-glow);
-  --neon-shadow-secondary: 0 0 10px var(--color-secondary-glow);
+  --color-text-main: #334155;
+  /* Slate 700 - Soft Black */
+  --color-text-muted: #64748B;
+  /* Slate 500 */
+  --color-text-light: #94A3B8;
+
+  --color-border: #E2E8F0;
+  /* Slate 200 */
+
+  /* Soft Shadows */
+  --shadow-sm: 0 2px 4px rgba(148, 163, 184, 0.05);
+  --shadow-md: 0 4px 12px rgba(148, 163, 184, 0.08);
+  --shadow-lg: 0 10px 25px rgba(148, 163, 184, 0.1);
+  --shadow-floating: 0 20px 40px rgba(148, 163, 184, 0.15);
 
   /* Typography */
-  --font-main: 'Inter', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-main: 'Nunito', 'M PLUS Rounded 1c', sans-serif;
+  /* Rounded, friendly fonts */
+  --font-mono: 'Menlo', monospace;
+
+  /* Radius */
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 12px;
 
   /* Animations */
-  --transition-fast: 0.15s ease;
-  --transition-smooth: 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  --transition-smooth: 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 * {
@@ -44,97 +52,90 @@
 
 body {
   font-family: var(--font-main);
-  background-color: var(--color-bg-dark);
-  /* Sharp mesh gradients for Solana look */
+  background-color: var(--color-bg-base);
+  /* Soft morning gradient */
   background-image:
-    radial-gradient(circle at 15% 15%, rgba(153, 69, 255, 0.15) 0%, transparent 45%),
-    radial-gradient(circle at 85% 85%, rgba(20, 241, 149, 0.12) 0%, transparent 45%);
+    linear-gradient(135deg, #FFF7ED 0%, #FAFAFA 40%, #F0F9FF 100%);
   color: var(--color-text-main);
-  line-height: 1.5;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-bg-dark);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 4px;
+  background: #CBD5E1;
+  border-radius: 99px;
+  border: 2px solid var(--color-bg-base);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary);
+  background: #94A3B8;
 }
 
 /* Utilities */
 .glass-panel {
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid white;
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-lg);
 }
 
-/* Neon Glow Effect for active items */
-.glow-border {
-  position: relative;
-  z-index: 0;
-}
-
-.glow-border::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  z-index: -1;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-bg-dark), var(--color-secondary));
-  background-size: 200%;
-  border-radius: inherit;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.glow-border:hover::before {
-  opacity: 1;
-}
-
-/* Solana Gradient Text */
 .text-gradient {
-  background: linear-gradient(90deg, #9945FF 0%, #14F195 100%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, #F472B6 100%);
+  /* Orange to Pink */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-weight: 800;
+  font-weight: 700;
 }
 
-.font-mono {
-  font-family: var(--font-mono);
+/* Card Styles */
+.card-base {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid white;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-smooth);
 }
 
-/* Solana Specific Utilities */
-.btn-solana-primary {
-  background: linear-gradient(135deg, #9945FF 0%, #8752F3 100%);
-  color: white;
-  font-weight: 600;
-  box-shadow: 0 4px 14px rgba(153, 69, 255, 0.4);
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
 }
 
-.btn-solana-primary:hover {
-  box-shadow: 0 6px 20px rgba(153, 69, 255, 0.6);
-  transform: translateY(-1px);
+/* Button Base */
+.btn-base {
+  border-radius: 99px;
+  /* Pill shape */
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: var(--transition-smooth);
+  padding: 0.75rem 2rem;
 }
 
-.btn-solana-secondary {
-  background: transparent;
-  border: 1px solid #333;
-  color: white;
+/* Animation utilities */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.btn-solana-secondary:hover {
-  border-color: #FFFFFF;
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
 }
