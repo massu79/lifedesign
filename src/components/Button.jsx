@@ -1,30 +1,32 @@
 import React from 'react';
 import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 const Button = ({
     children,
-    variant = 'primary', // primary, secondary, ghost
+    variant = 'primary', // primary, secondary, ghost, neon
     size = 'md', // sm, md, lg
     className,
     ...props
 }) => {
-    const baseStyles = 'inline-flex items-center justify-center rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[var(--color-bg-dark)]';
+    const baseStyles = 'inline-flex items-center justify-center rounded-lg font-bold tracking-wide transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[var(--color-bg-dark)] uppercase text-xs';
 
     const variants = {
-        primary: 'bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-hover)] shadow-lg shadow-orange-900/20',
-        secondary: 'bg-[var(--color-bg-card)] text-[var(--color-text-main)] border border-[var(--color-border)] hover:bg-[var(--color-bg-card-hover)]',
+        primary: 'bg-[var(--color-primary)] text-black hover:bg-cyan-400 hover:shadow-[0_0_20px_var(--color-primary-glow)]',
+        secondary: 'bg-[var(--color-bg-card)] text-[var(--color-text-main)] border border-[var(--color-border)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]',
         ghost: 'bg-transparent text-[var(--color-text-muted)] hover:text-[var(--color-text-main)] hover:bg-[rgba(255,255,255,0.05)]',
+        neon: 'bg-transparent border border-[var(--color-secondary)] text-[var(--color-secondary)] hover:bg-[var(--color-secondary)] hover:text-white hover:shadow-[0_0_20px_var(--color-secondary-glow)]'
     };
 
     const sizes = {
-        sm: 'px-3 py-1.5 text-xs',
-        md: 'px-4 py-2 text-sm',
-        lg: 'px-6 py-3 text-base',
+        sm: 'px-3 py-2',
+        md: 'px-5 py-3',
+        lg: 'px-8 py-4 text-sm',
     };
 
     return (
         <button
-            className={clsx(baseStyles, variants[variant], sizes[size], className)}
+            className={twMerge(clsx(baseStyles, variants[variant], sizes[size], className))}
             {...props}
         >
             {children}
